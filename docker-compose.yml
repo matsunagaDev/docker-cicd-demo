@@ -4,7 +4,8 @@ services:
     container_name: api
     build: ./api
     ports:
-      - 8080:8080
+      - 8081:8080
+    tty: true
     volumes:
       - ./api:/workspace:cached
 
@@ -13,6 +14,9 @@ services:
     build: ./web
     ports:
       - 3001:3000
+    environment:
+      - REACT_APP_API_SERVER=http://localhost:8081/api
+    tty: true
     volumes:
       - ./web:/workspace:cached
     depends_on:
