@@ -1,4 +1,4 @@
 {
   "java.compile.nullAnalysis.mode": "automatic",
-  "cSpell.words": ["gradlew"]
+  "cSpell.words": ["cicd", "gradlew", "initializr"]
 }
