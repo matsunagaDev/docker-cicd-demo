@@ -111,7 +111,7 @@ jobs:
 
       - name: Fill in the new Image ID in the Amazon ECS task definition for web
         id: render-web-task-def
-        uses: aws-actions/amazon-ecs-render-task-definition@v2
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: ${{ env.ECS_TASK_DEFINITION}}
           container-name: web
@@ -119,7 +119,7 @@ jobs:
 
       - name: Fill in the new Image ID in the Amazon ECS task definition for api
         id: render-api-task-def
-        uses: aws-actions/amazon-ecs-render-task-definition@v2
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: ${{ env.ECS_TASK_DEFINITION }}
           container-name: web
