@@ -109,6 +109,11 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v2
 
+      - name: Set execution role ARN in task definition
+        run: |
+          ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+          sed -i "s|\"executionRoleArn\": \"ecsTaskExecutionRole\"|\"executionRoleArn\": \"arn:aws:iam::${ACCOUNT_ID}:role/ecsTaskExecutionRole\"|" ${{ env.ECS_TASK_DEFINITION }}
+
       - name: Fill in the new Image ID in the Amazon ECS task definition for web
         id: render-web-task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
